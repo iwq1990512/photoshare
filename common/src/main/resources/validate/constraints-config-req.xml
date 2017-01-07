@@ -1,0 +1,48 @@
+<constraint-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://jboss.org/xml/ns/javax/validation/mapping validation-mapping-1.0.xsd"
+                     xmlns="http://jboss.org/xml/ns/javax/validation/mapping">
+    <!-- 配置是否可用服务参数校验 -->
+    <default-package>com.wmeup.photoshare.api.config.bo</default-package>
+    <!--银行是否可用配置查询，银行代码不能为空-->
+    <bean class="com.wmeup.photoshare.api.config.bo.BankAvailReq">
+        <field name="bankCode">
+            <constraint annotation="org.hibernate.validator.constraints.NotBlank" >
+                <message>参数bankCode不可为空</message>
+            </constraint>
+        </field>
+    </bean>
+    <bean class="com.wmeup.photoshare.api.config.bo.AddOneConfigReq">
+        <field name="flag">
+            <constraint annotation="org.hibernate.validator.constraints.NotBlank" >
+                <message>参数flag不可为空</message>
+            </constraint>
+        </field>
+        <field name="value">
+            <constraint annotation="org.hibernate.validator.constraints.NotBlank" >
+                <message>参数value不可为空</message>
+            </constraint>
+        </field>
+    </bean>
+    <bean class="com.wmeup.photoshare.api.config.bo.DelConfigReq">
+        <field name="id">
+            <constraint annotation="com.wmeup.photoshare.common.utils.hibvalidator.LongPattern" >
+                <message>参数主键id不可为空</message>
+            </constraint>
+        </field>
+    </bean>
+    <bean class="com.wmeup.photoshare.api.config.bo.UpdateConfigReq">
+        <field name="id">
+            <constraint annotation="com.wmeup.photoshare.common.utils.hibvalidator.LongPattern" >
+                <message>参数主键id不可为空</message>
+            </constraint>
+        </field>
+    </bean>
+    <bean class="com.wmeup.photoshare.api.config.bo.QryConfigByIdReq">
+        <field name="id">
+            <constraint annotation="com.wmeup.photoshare.common.utils.hibvalidator.LongPattern" >
+                <message>参数主键id不可为空</message>
+            </constraint>
+        </field>
+    </bean>
+
+</constraint-mappings>

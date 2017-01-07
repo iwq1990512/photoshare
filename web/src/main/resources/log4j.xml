@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ - Copyright 1999-2011 Alibaba Group.
+ -  
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -  
+ -      http://www.apache.org/licenses/LICENSE-2.0
+ -  
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+-->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="DEFAULT-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/default/default.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="Append" value="false" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="ERROR-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/error/error.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="Append" value="false" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="threshold" value="error" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+	
+	
+	<appender name="BIZ-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/biz/biz.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="Append" value="false" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="COMMON-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/common/common.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="Append" value="false" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="DAO-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/dao/dao.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="Append" value="false" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	
+	<appender name="PROVIDER-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/provider/provider.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="Append" value="false" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="CONTROLLER-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/web-controller/web-controller.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="Append" value="false" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+<!--	<appender name="IDAUTH_PROVIDERR_STROE-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/photoshare-provider-store/photoshare-provider-store.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH"/>
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>-->
+<!--	<appender name="IDAUTH_HTTP_SEND_MSG-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/photoshare-http-sendmsg/photoshare-http-sendmsg.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH"/>
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>-->
+<!--	<appender name="MQ-RECEIVER-DIGEST-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/mq-receiver-digest/mq-receiver-digest.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH"/>
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>-->
+<!--	<appender name="MQ-FINISH-DIGEST-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log4j.path}/mq-finish-digest/mq-finish-digest.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH"/>
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{requestId}] %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>-->
+<!--	<appender name="socketAppender" class="org.apache.log4j.net.SocketAppender">
+		<param name="remoteHost" value="${logstash.host}" />
+		<param name="port" value="${logstash.port}" />
+		<param name="Threshold" value="INFO" />
+		<param name="ReconnectionDelay" value="1000" />
+		<param name="LocationInfo" value="true" />
+	</appender>-->
+
+
+	<!-- biz日志 -->
+	<logger name="com.wmeup.photoshare.biz" additivity="true">
+		<level value="${log4j.level}" />
+		<appender-ref ref="BIZ-APPENDER" />
+	</logger>
+
+	<!-- common日志 -->
+	<logger name="com.wmeup.photoshare.common" additivity="true">
+		<level value="${log4j.level}" />
+		<appender-ref ref="COMMON-APPENDER" />
+	</logger>
+
+
+	<!-- dao日志, 打印SQL -->
+	<logger name="com.wmeup.photoshare.dao" additivity="true">
+		<level value="${log4j.level}" />
+		<appender-ref ref="DAO-APPENDER" />
+	</logger>
+
+	<!-- provider日志 -->
+	<logger name="com.wmeup.photoshare.provider" additivity="true">
+		<level value="${log4j.level}" />
+		<appender-ref ref="PROVIDER-APPENDER" />
+	</logger>
+
+
+	<!-- controller日志, http接口日志 -->
+	<logger name="com.wmeup.photoshare.controller" additivity="true">
+		<level value="${log4j.level}" />
+		<appender-ref ref="CONTROLLER-APPENDER" />
+	</logger>
+	
+	<root>
+		<level value="${log4j.level}" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="DEFAULT-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+<!--		<appender-ref ref="socketAppender" />-->
+	</root>
+</log4j:configuration>

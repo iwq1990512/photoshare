@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://code.alibabatech.com/schema/dubbo
+						http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.wmeup.photoshare.consumer"/>
+
+    <!-- 配置文件 -->
+    <bean id="consumerProClass" class="com.wmeup.photoshare.consumer.property.ConsumerProClass">
+        <constructor-arg name="certUrl" value="${cert.url}"/>
+        <constructor-arg name="certCharsetType" value="${cert.charsetType}"/>
+        <constructor-arg name="certSecretKey" value="${cert.secretKey}"/>
+        <constructor-arg name="certVersion" value="${cert.version}"/>
+        <constructor-arg name="certSignType" value="${cert.signType}"/>
+        <constructor-arg name="payVersion" value="${pay.version}"/>
+        <constructor-arg name="payUrl" value="${pay.url}"/>
+        <constructor-arg name="paySignType" value="${pay.signType}"/>
+        <constructor-arg name="payCertPath" value="${pay.cert.path}"/>
+        <constructor-arg name="payMerchantId" value="${pay.merchantId}"/>
+        <constructor-arg name="payCertPassword" value="${pay.cert.password}"/>
+        <constructor-arg name="payPassType" value="${pay.bank.passType}"/>
+    </bean>
+</beans>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wmeup.photoshare.dao.mapper.config.ConfigMapper">
+    <resultMap id="fieldMapper" type="com.wmeup.photoshare.dao.domain.config.Config">
+		<id property="id" column="ID" /><!---->
+        <result property="flag" column="FLAG" /><!--配置类型-->
+        <result property="value" column="VALUE" /><!--配置具体value-->
+        <result property="state" column="STATE" /><!--是否生效: 1true, 0false-->
+        <result property="description" column="DESCRIPTION" /><!---->
+        <result property="createTime" column="CREATE_TIME" /><!--创建时间-->
+        <result property="updateTime" column="UPDATE_TIME" /><!--修改时间-->
+        <result property="beginTime" column="BEGIN_TIME" /><!--开始时间-->
+        <result property="endTime" column="END_TIME" /><!--结束时间-->
+        <result property="error" column="ERROR" /><!---->
+    </resultMap>
+    <sql id="field">
+		<trim suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="flag != null">
+				FLAG,
+			</if>
+			<if test="value != null">
+				VALUE,
+			</if>
+			<if test="state != null">
+				STATE,
+			</if>
+			<if test="description != null">
+				DESCRIPTION,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME,
+			</if>
+			<if test="beginTime != null">
+				BEGIN_TIME,
+			</if>
+			<if test="endTime != null">
+				END_TIME,
+			</if>
+			<if test="error != null">
+				ERROR
+			</if>
+		</trim>
+    </sql>
+    <sql id="property">
+		<trim suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="flag != null">
+				#{flag,jdbcType=VARCHAR},
+			</if>
+			<if test="value != null">
+				#{value,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=TINYINT},
+			</if>
+			<if test="description != null">
+				#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="beginTime != null">
+				#{beginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endTime != null">
+				#{endTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="error != null">
+				#{error,jdbcType=VARCHAR}
+			</if>
+		</trim>
+    </sql>
+    <sql id="fieldAsProperty">
+		ID AS id,
+		FLAG AS flag,
+		VALUE AS value,
+		STATE AS state,
+		DESCRIPTION AS description,
+		CREATE_TIME AS createTime,
+		UPDATE_TIME AS updateTime,
+		BEGIN_TIME AS beginTime,
+		END_TIME AS endTime,
+		ERROR AS error
+    </sql>
+
+    <sql id="fieldEqProperty">
+	    ID=#{id,jdbcType=BIGINT},
+	    FLAG=#{flag,jdbcType=VARCHAR},
+	    VALUE=#{value,jdbcType=VARCHAR},
+	    STATE=#{state,jdbcType=TINYINT},
+	    DESCRIPTION=#{description,jdbcType=VARCHAR},
+	    CREATE_TIME=#{createTime,jdbcType=TIMESTAMP},
+	    UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP},
+	    BEGIN_TIME=#{beginTime,jdbcType=TIMESTAMP},
+	    END_TIME=#{endTime,jdbcType=TIMESTAMP},
+	    ERROR=#{error,jdbcType=VARCHAR}
+    </sql>
+    <sql id="fieldEqPropertyIf">
+        <if test="id!=null" >ID=#{id,jdbcType=BIGINT}</if>
+        <if test="flag!=null and flag!=''" > AND FLAG=#{flag,jdbcType=VARCHAR}</if>
+		<if test="state!=null" > AND STATE=#{state,jdbcType=TINYINT}</if>
+        <if test="value!=null and value!=''" > AND VALUE=#{value,jdbcType=VARCHAR}</if>
+        <if test="description!=null and description!=''" > AND DESCRIPTION=#{description,jdbcType=VARCHAR}</if>
+        <if test="createTime!=null and createTime!=''" > AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+        <if test="updateTime!=null and updateTime!=''" > AND UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP}</if>
+        <if test="beginTime!=null and beginTime!=''" > AND BEGIN_TIME=#{beginTime,jdbcType=TIMESTAMP}</if>
+        <if test="endTime!=null and endTime!=''" > AND END_TIME=#{endTime,jdbcType=TIMESTAMP}</if>
+        <if test="error!=null and error!=''" > AND ERROR=#{error,jdbcType=VARCHAR}</if>
+    </sql>
+	<sql id="fieldEqPropertySetIf">
+		<if test="id!=null" >ID=#{id,jdbcType=BIGINT}, </if>
+		<if test="flag!=null and flag!=''" >  FLAG=#{flag,jdbcType=VARCHAR},</if>
+		<if test="state!=null" >  STATE=#{state,jdbcType=TINYINT},</if>
+		<if test="value!=null and value!=''" >  VALUE=#{value,jdbcType=VARCHAR},</if>
+		<if test="description!=null and description!=''" >  DESCRIPTION=#{description,jdbcType=VARCHAR},</if>
+		<if test="createTime!=null and createTime!=''" >  CREATE_TIME=#{createTime,jdbcType=TIMESTAMP},</if>
+		<if test="updateTime!=null and updateTime!=''" >  UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP},</if>
+		<if test="beginTime!=null and beginTime!=''" >  BEGIN_TIME=#{beginTime,jdbcType=TIMESTAMP},</if>
+		<if test="endTime!=null and endTime!=''" >  END_TIME=#{endTime,jdbcType=TIMESTAMP},</if>
+		<if test="error!=null and error!=''" >  ERROR=#{error,jdbcType=VARCHAR}</if>
+	</sql>
+
+	<!--获取一个记录-->
+	<select id="queryOneConfig" resultType="config" parameterType="config">
+		SELECT  <include refid="fieldAsProperty" />FROM config
+		<where>
+			<include refid="fieldEqPropertyIf"/>
+		</where>
+	</select>
+	<select id="selectById" resultType="config" parameterType="config">
+		SELECT  <include refid="fieldAsProperty" />FROM config
+		WHERE  id=#{id}
+	</select>
+	<select id="queryConfigs" resultMap="fieldMapper">
+		SELECT <include refid="fieldAsProperty"/> FROM config
+		<where>
+			<include refid="fieldEqPropertyIf"/>
+		</where>
+		ORDER BY ID DESC
+	</select>
+	<insert id="insertOne" useGeneratedKeys="true" keyProperty="id" parameterType="config">
+		INSERT INTO config (<include refid="field"/>) VALUES (<include refid="property"/>)
+	</insert>
+
+	<update id="delById" parameterType="config">
+		UPDATE  config <set> state=0</set>
+		WHERE id=#{id}
+	</update>
+
+	<update id="updateById" parameterType="config">
+		UPDATE config
+		<set> <include refid="fieldEqPropertySetIf"/></set>
+		WHERE id=#{id}
+	</update>
+
+</mapper>
+
